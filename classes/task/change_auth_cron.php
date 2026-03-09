@@ -60,6 +60,19 @@ class change_auth_cron extends \core\task\scheduled_task {
             $user->auth = 'manual';
             try {
                 $DB->update_record('user', $user);
+
+                // Trigger user_updated event.
+                $event = \core\event\user_updated::create([
+                    'objectid' => $user->id,
+                    'context' => \context_user::instance($user->id),
+                    'relateduserid' => $user->id,
+                    'other' => [
+                        'auth' => 'manual'
+                    ]
+                ]);
+
+                $event->trigger();
+
                 $count++;
             } catch (Exception $e) {
                 $a = (object)[

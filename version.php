@@ -26,7 +26,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_change_auth';
-$plugin->version = 2026020100;
+$plugin->version = 2026020101;
 $plugin->requires = 2022112800; // Requires Moodle 4.1 or older.
-$plugin->release = '1.1';
+$plugin->release = '1.2';
 $plugin->maturity = MATURITY_STABLE;
