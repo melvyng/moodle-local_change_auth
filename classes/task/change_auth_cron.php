@@ -67,8 +67,8 @@ class change_auth_cron extends \core\task\scheduled_task {
                     'context' => \context_user::instance($user->id),
                     'relateduserid' => $user->id,
                     'other' => [
-                        'auth' => 'manual'
-                    ]
+                        'auth' => 'manual',
+                    ],
                 ]);
 
                 $event->trigger();
